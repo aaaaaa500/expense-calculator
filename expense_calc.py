@@ -33,10 +33,10 @@ TAX_STRATEGIES: dict[str, TaxStrategy] = {
 
 
 def add_expense(expenses, name, amount, category):
-    # Add one expense to the list
-    # Добавляем один расход в список
+    # Reject zero, negative and non-number amounts
+    if not isinstance(amount, (int, float)) or amount <= 0:
+        raise ValueError("amount must be a positive number")
     expenses.append({"name": name, "amount": amount, "category": category})
-
 
 def total_with_tax(expenses):
     # Sum of all expenses, tax is chosen by category strategy

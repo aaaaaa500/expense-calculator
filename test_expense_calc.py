@@ -39,3 +39,9 @@ def test_all_categories_tax():
     assert total_with_tax(expenses) == pytest.approx(435.0)
 
 
+def test_negative_amount_rejected():
+    # A negative amount must raise ValueError and add nothing
+    expenses = []
+    with pytest.raises(ValueError):
+        add_expense(expenses, "x", -100, "food")
+    assert expenses == []
