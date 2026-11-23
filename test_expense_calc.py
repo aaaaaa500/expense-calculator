@@ -26,3 +26,15 @@ def test_save_and_load(tmp_path):
     file_path = tmp_path / "test.json"
     save_to_file(expenses, str(file_path))
     assert load_from_file(str(file_path)) == expenses
+
+
+def test_all_categories_tax():
+    # food 105 + transport 110 + entertainment 120 + other 100 = 435
+    expenses = []
+    add_expense(expenses, "lunch", 100, "food")
+    add_expense(expenses, "bus", 100, "transport")
+    add_expense(expenses, "cinema", 100, "entertainment")
+    add_expense(expenses, "book", 100, "other")
+    assert total_with_tax(expenses) == pytest.approx(435.0)
+
+
