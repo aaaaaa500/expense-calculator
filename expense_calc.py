@@ -40,10 +40,9 @@ def add_expense(expenses, name, amount, category):
 
 def total_with_tax(expenses):
     # Sum of all expenses, tax is chosen by category strategy
-    # Сумма всех расходов, налог выбирается стратегией по категории
     total = 0
     for e in expenses:
-        strategy = TAX_STRATEGIES.get(e["category"], no_tax)
+        strategy = TAX_STRATEGIES.get(e["category"].strip().lower(), no_tax)
         total += strategy(e["amount"])
     return total
 

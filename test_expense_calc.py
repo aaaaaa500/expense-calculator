@@ -45,3 +45,10 @@ def test_negative_amount_rejected():
     with pytest.raises(ValueError):
         add_expense(expenses, "x", -100, "food")
     assert expenses == []
+
+
+def test_category_case_insensitive():
+    # "Food" must get the same 5% tax as "food"
+    expenses = []
+    add_expense(expenses, "x", 100, "Food")
+    assert total_with_tax(expenses) == pytest.approx(105.0)
