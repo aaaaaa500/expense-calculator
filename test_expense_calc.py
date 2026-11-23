@@ -1,7 +1,8 @@
 # test_expense_calc.py
 # Tests for expense_calc.py
 import pytest
-from expense_calc import add_expense, total_with_tax, save_to_file, load_from_file
+
+from expense_calc import add_expense, load_from_file, save_to_file, total_with_tax
 
 
 def test_add_expense():
